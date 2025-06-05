@@ -28,3 +28,6 @@ This will star tarkov and ensure the affinity and I/O management is prioritized 
 
 If you need to change visual settings, you can modify the Graphics.ini json here:
 https://github.com/td4b/TarkovOptimization/blob/main/tarkov.ps1#L16-L90
+
+Additionally game cpu core usage (virtual), head bobbing and field of view are pinned here:
+https://github.com/td4b/TarkovOptimization/blob/main/tarkov.ps1#L98-L100
