@@ -13,14 +13,25 @@ Write-Host @'
 # === CONFIGURATION ===
 $BSGLauncherPath = "C:\Battlestate Games\BsgLauncher\BsgLauncher.exe"
 $TarkovProcessName = "EscapeFromTarkov.exe"
-$PowerSchemeGUID = "e9a42b02-d5df-448d-aa00-03f14749eb61"
 $EmptyStandbyTool = "C:\Tools\EmptyStandbyList.exe"
 $GraphicsIniPath = "C:\Users\edwin\AppData\Roaming\Battlestate Games\Escape from Tarkov\Settings\Graphics.ini"
 $GameIniPath = "C:\Users\edwin\AppData\Roaming\Battlestate Games\Escape from Tarkov\Settings\Game.ini"
 $PostFxPath = "C:\Users\edwin\AppData\Roaming\Battlestate Games\Escape from Tarkov\Settings\PostFx.ini"
 
-Write-Host "[*] Using High Performance power plan (Ultimate not supported)..." -ForegroundColor Green
-powercfg /setactive SCHEME_MIN
+# Find Bitsum Highest Performance plan GUID
+$bitsumPlan = powercfg /list | Where-Object { $_ -like "*Bitsum Highest Performance*" } | ForEach-Object {
+    ($_ -split ":")[1].Trim().Split()[0]
+}
+
+if ($bitsumPlan) {
+    Write-Host "[*] Setting power plan to Bitsum Highest Performance..." -ForegroundColor Green
+    powercfg /setactive $bitsumPlan
+    Write-Host "[+] Power plan set successfully!" -ForegroundColor Green
+} else {
+    Write-Host "[!] Bitsum plan not found. Falling back to High Performance (SCHEME_MIN)..." -ForegroundColor Yellow
+    powercfg /setactive SCHEME_MIN
+    Write-Host "[+] Power plan set to High Performance." -ForegroundColor Green
+}
 
 # === Write graphics.ini with optimized settings ===
 Write-Host "[*] Applying optimized Graphics.ini settings..." -ForegroundColor Green
