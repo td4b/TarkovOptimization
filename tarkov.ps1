@@ -26,7 +26,7 @@ $bitsumPlan = powercfg /list | Where-Object { $_ -like "*Bitsum Highest Performa
 if ($bitsumPlan) {
     Write-Host "[*] Setting power plan to Bitsum Highest Performance..." -ForegroundColor Green
     powercfg /setactive $bitsumPlan
-    Write-Host "[+] Power plan set successfully!" -ForegroundColor Green
+    Write-Host "[+] Bitsum Power plan set successfully!" -ForegroundColor Green
 } else {
     Write-Host "[!] Bitsum plan not found. Falling back to High Performance (SCHEME_MIN)..." -ForegroundColor Yellow
     powercfg /setactive SCHEME_MIN
