@@ -191,9 +191,14 @@ Stop-Process -Name "BsgLauncher" -Force -ErrorAction SilentlyContinue
 
 Write-Host "[*] Done. Raid smart. Help out Timmy's." -ForegroundColor Green
 
-# === Countdown before closing ===
-for ($i = 5; $i -ge 1; $i--) {
-    Write-Host "Closing in $i seconds..." -ForegroundColor Green -NoNewline
-    Start-Sleep -Seconds 1
-    Write-Host "`r" + (" " * 30) + "`r" -NoNewline
-}
+# === Monitor Tarkov process and restore Balanced power plan when done ===
+Write-Host "[*] Monitoring Tarkov process. Will restore Balanced power plan when game exits..." -ForegroundColor Green
+do {
+    Start-Sleep -Seconds 3
+    $tarkovProc = Get-Process -Name ($TarkovProcessName -replace ".exe","") -ErrorAction SilentlyContinue
+    Write-Host -NoNewline "`r[*] Tarkov is running... ($(Get-Date -Format 'HH:mm:ss'))" -ForegroundColor Green
+} while ($tarkovProc)
+
+Write-Host "`r[*] Tarkov has exited. Restoring Balanced power plan..." -ForegroundColor Yellow
+powercfg /setactive SCHEME_BALANCED
+Write-Host "[+] Balanced power plan restored. Goodbye!" -ForegroundColor Green
