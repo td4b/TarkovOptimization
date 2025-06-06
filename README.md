@@ -7,6 +7,12 @@ Move this to a location accessible for the scirpt. Options are located at the to
 
 Ensure these path's are all correct for your system.
 
+!!IMPORTANT!!
+
+This pins your graphical settings and PostFX settings, if you want to change those you need to update the powershell script as that pins the settings in your game (preventing them from changing between game patches). 
+
+Additionally I recommend enabling digital vibrance in nvidia control panel. I use 90% vibrance. 
+
 Example:
 ```powershell
 $BSGLauncherPath = "C:\Battlestate Games\BsgLauncher\BsgLauncher.exe"
