@@ -169,4 +169,10 @@ Write-Host "[*] Closing BSG Launcher..."
 Stop-Process -Name "BsgLauncher" -Force -ErrorAction SilentlyContinue
 
 Write-Host "[*] Done. Raid smart. Help out Timmy's."
-Read-Host "Press Enter to exit"
+
+# === Countdown before closing ===
+for ($i = 5; $i -ge 1; $i--) {
+    Write-Host "Closing in $i seconds..." -NoNewline
+    Start-Sleep -Seconds 1
+    Write-Host "`r" + (" " * 30) + "`r" -NoNewline  # Clear line for countdown refresh
+}
