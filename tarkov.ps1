@@ -39,12 +39,12 @@ $graphicsSettings = @'
         "Y": 9
       },
       "WindowResolution": {
-        "Width": 2560,
-        "Height": 1440
+        "Width": 2544,
+        "Height": 1353
       },
       "WindowAspectRatio": {
-        "X": 16,
-        "Y": 9
+        "X": 19,
+        "Y": 10
       }
     }
   ],
@@ -70,12 +70,12 @@ $graphicsSettings = @'
   "GameFramerate": 165,
   "DisableGameFramerateLimit": false,
   "SuperSampling": "Off",
-  "AnisotropicFiltering": "Disable",
+  "AnisotropicFiltering": "Enable",
   "OverallVisibility": 1000.0,
   "LodBias": 2.0,
   "MipStreamingBufferSize": 32,
   "MipStreamingIOCount": 768,
-  "Ssao": "ColoredHighestQuality",
+  "Ssao": "FastestPerformance",
   "Sharpen": 0.6,
   "SSR": "Medium",
   "AntiAliasing": "TAA_High",
@@ -88,13 +88,13 @@ $graphicsSettings = @'
   "HighQualityColor": true,
   "MipStreaming": false,
   "SdTarkovStreets": false,
-  "VolumetricLight": false,
-  "DLSSMode": "Off",
+  "VolumetricLight": true,
+  "DLSSMode": "Quality",
   "FSR2Mode": "Off",
   "FSR3Mode": "Off",
-  "DLSSPreset": "Default",
+  "DLSSPreset": "B",
   "InApplyDisplaySettingsProcess": false,
-  "DLSSEnabled": false,
+  "DLSSEnabled": true,
   "FSR2Enabled": false,
   "FSR3Enabled": false,
   "ShadowDistance": 30.0,
@@ -124,16 +124,16 @@ Write-Host "[*] Applying PostFx settings..." -ForegroundColor Green
 $postFxSettings = @'
 {
   "EnablePostFx": true,
-  "Brightness": 6,
-  "Saturation": 32,
-  "Clarity": 82,
-  "Colorfulness": 80,
-  "LumaSharpen": 10,
-  "AdaptiveSharpen": 3,
-  "ColorFilterType": "Feather",
-  "Intensity": 50,
+  "Brightness": 75,
+  "Saturation": 42,
+  "Clarity": 31,
+  "Colorfulness": 54,
+  "LumaSharpen": 61,
+  "AdaptiveSharpen": 83,
+  "ColorFilterType": "Stefano",
+  "Intensity": 30,
   "ColorBlindnessType": "None",
-  "ColorBlindnessIntensity": 0
+  "ColorBlindnessIntensity": 3
 }
 '@
 try {
